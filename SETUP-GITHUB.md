@@ -30,7 +30,7 @@ File này đã bị `.gitignore` nên không bao giờ lên repo.
 **1. Tạo khoá ký**
 
 ```powershell
-& "C:\Program Files\Android\Android Studio1\jbrin\keytool.exe" -genkeypair -v -keystore jarvis-release.keystore -alias jarvis -keyalg RSA -keysize 2048 -validity 10000 -dname "CN=JARVIS, O=Personal, C=VN"
+& "C:\Program Files\Android\Android Studio1\jbr\bin\keytool.exe" -genkeypair -v -keystore jarvis-release.keystore -alias jarvis -keyalg RSA -keysize 2048 -validity 10000 -dname "CN=JARVIS, O=Personal, C=VN"
 ```
 
 **2. Nạp secret bằng `gh`**
@@ -44,7 +44,7 @@ gh secret set KEY_PASSWORD --repo LongDP10/jarvis --body "MAT_KHAU"
 ```
 
 > **Bắt buộc dùng `--body`, không được pipe.** PowerShell 5.1 chèn CRLF khi pipe
-> chuỗi dài sang lệnh native, và `base64 -d` trên runner Linux coi ký tự `` là
+> chuỗi dài sang lệnh native, và `base64 -d` trên runner Linux coi ký tự `CR` (carriage return) là
 > input không hợp lệ. Đây chính là lỗi đã gặp lần đầu.
 
 **3. Trỏ app về repo** — sửa `github_repo` trong `app/src/main/res/values/strings.xml`.
