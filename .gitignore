@@ -17,3 +17,5 @@ local.properties
 *.keystore
 *.jks
 keystore.properties
+keystore-password.txt
+*.base64
