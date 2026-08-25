@@ -71,11 +71,18 @@ jobs:
           # so the naming here is load-bearing, not cosmetic.
           cp "$APK" "jarvis-$VERSION.apk"
 
+          # Notes go through a file rather than an inline argument: the commit
+          # message is arbitrary text and would otherwise have to survive both
+          # YAML and shell quoting intact.
+          {
+            echo "Automatic build of ${{ github.sha }}"
+            echo
+            git log -1 --pretty=%B
+          } > release-notes.md
+
           gh release create "v$VERSION" "jarvis-$VERSION.apk" \
             --title "JARVIS $VERSION" \
-            --notes "Automatic build of ${{ github.sha }}
-
-          $(git log -1 --pretty=%B)"
+            --notes-file release-notes.md
 
       - name: Clean up keystore
         if: always()
