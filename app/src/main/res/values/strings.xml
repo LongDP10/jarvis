@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">JARVIS</string>
+    <string name="accessibility_service_label">JARVIS Device Control</string>
+    <string name="accessibility_service_description">Lets JARVIS read what is on screen and perform taps, swipes and system actions on your behalf when you give it a command. JARVIS never acts on its own.</string>
+    <string name="notification_listener_label">JARVIS Notifications</string>
+
+    <!-- States -->
+    <string name="state_ready">Ready</string>
+    <string name="state_listening">Listening…</string>
+    <string name="state_thinking">Thinking…</string>
+    <string name="state_executing">Working…</string>
+    <string name="state_speaking">Speaking…</string>
+    <string name="state_error">Something went wrong</string>
+    <string name="state_cancelled">Cancelled</string>
+
+    <!-- Home -->
+    <string name="home_greeting">How can I help?</string>
+    <string name="home_voice">Voice</string>
+    <string name="home_commands">Commands</string>
+    <string name="home_history">History</string>
+    <string name="home_settings">Settings</string>
+    <string name="home_tap_to_speak">Tap the orb to speak</string>
+
+    <!-- Chat -->
+    <string name="chat_title">Chat</string>
+    <string name="chat_hint">Type a command…</string>
+    <string name="chat_send">Send</string>
+    <string name="chat_mic">Speak</string>
+    <string name="chat_empty">Ask JARVIS to do something on your phone.</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_section_language">Language</string>
+    <string name="settings_language">Assistant language</string>
+    <string name="settings_language_vi">Tiếng Việt</string>
+    <string name="settings_language_en">English</string>
+    <string name="settings_language_auto">Auto detect</string>
+
+    <string name="settings_section_voice">Voice</string>
+    <string name="settings_voice">Voice</string>
+    <string name="settings_voice_default">System default</string>
+    <string name="settings_speech_rate">Speech rate</string>
+    <string name="settings_pitch">Pitch</string>
+    <string name="settings_voice_processing">Voice processing</string>
+    <string name="settings_voice_processing_cloud">Cloud</string>
+    <string name="settings_voice_processing_local">On device</string>
+    <string name="settings_voice_processing_hybrid">Hybrid</string>
+    <string name="settings_voice_processing_note">On-device recognition only works if you have downloaded an offline language pack in Android settings.</string>
+
+    <string name="settings_section_ai">AI</string>
+    <string name="settings_provider">AI provider</string>
+    <string name="settings_api_key">API key</string>
+    <string name="settings_api_key_hint">Paste your key</string>
+    <string name="settings_api_key_saved">Key saved securely on this device</string>
+    <string name="settings_api_key_missing">No key set — cloud commands will not work</string>
+    <string name="settings_api_key_note">Stored encrypted with the Android keystore. It is sent only to the provider you choose.</string>
+    <string name="settings_ollama_url">Ollama server URL</string>
+    <string name="settings_model">Model</string>
+
+    <string name="settings_section_assistant">Assistant</string>
+    <string name="settings_wake_word">Wake word "Hey Jarvis"</string>
+    <string name="settings_wake_word_warning">Keeps speech recognition running in the background. This uses noticeably more battery.</string>
+    <string name="settings_floating_orb">Floating orb</string>
+    <string name="settings_always_listening">Always listening</string>
+    <string name="settings_orb_size">Orb size</string>
+    <string name="settings_orb_position">Orb position</string>
+    <string name="settings_position_top_left">Top left</string>
+    <string name="settings_position_top_right">Top right</string>
+    <string name="settings_position_bottom_left">Bottom left</string>
+    <string name="settings_position_bottom_right">Bottom right</string>
+    <string name="settings_confirm_dangerous">Confirm calls and messages</string>
+    <string name="settings_confirm_dangerous_note">Always on. JARVIS will never place a call or send a message without asking you first.</string>
+
+    <string name="settings_section_developer">Developer</string>
+    <string name="settings_debug_log">Debug console</string>
+    <string name="settings_open_debug">Open debug console</string>
+
+    <!-- Permissions / onboarding -->
+    <string name="onboarding_title">Set up JARVIS</string>
+    <string name="onboarding_subtitle">JARVIS only asks for a permission when a feature needs it. You can skip any of these and grant them later.</string>
+    <string name="permission_grant">Grant</string>
+    <string name="permission_open_settings">Open settings</string>
+    <string name="permission_granted">Granted</string>
+    <string name="permission_microphone">Microphone</string>
+    <string name="permission_microphone_reason">Required to hear your commands.</string>
+    <string name="permission_notification">Notifications</string>
+    <string name="permission_notification_reason">Lets JARVIS show what it is doing while it runs in the background.</string>
+    <string name="permission_overlay">Display over other apps</string>
+    <string name="permission_overlay_reason">Required for the floating orb to stay visible above other apps.</string>
+    <string name="permission_accessibility">Accessibility service</string>
+    <string name="permission_accessibility_reason">Required to tap, scroll, read the screen and take screenshots. Android does not let an app enable this itself.</string>
+    <string name="permission_location">Location</string>
+    <string name="permission_location_reason">Only used when you ask where you are or about local information.</string>
+    <string name="permission_phone">Phone</string>
+    <string name="permission_phone_reason">Only used when you ask JARVIS to place a call. Every call is confirmed first.</string>
+    <string name="permission_sms">SMS</string>
+    <string name="permission_sms_reason">Only used when you ask JARVIS to send a message. Every message is confirmed first.</string>
+    <string name="permission_contacts">Contacts</string>
+    <string name="permission_contacts_reason">Lets JARVIS resolve a name to a number when you ask it to call someone.</string>
+    <string name="permission_notification_listener">Notification access</string>
+    <string name="permission_notification_listener_reason">Lets JARVIS read your notifications out to you when you ask.</string>
+    <string name="permission_write_settings">Modify system settings</string>
+    <string name="permission_write_settings_reason">Required to change screen brightness.</string>
+
+    <!-- Confirmation -->
+    <string name="confirm_title">Confirm</string>
+    <string name="confirm_cancel">Cancel</string>
+    <string name="confirm_ok">Confirm</string>
+    <string name="confirm_call">Call</string>
+    <string name="confirm_send">Send</string>
+    <string name="confirm_call_message">Call %1$s?</string>
+    <string name="confirm_sms_message">Send this message to %1$s?</string>
+
+    <!-- History / debug -->
+    <string name="history_title">History</string>
+    <string name="history_empty">No conversations yet.</string>
+    <string name="history_clear">Clear history</string>
+    <string name="debug_title">Debug console</string>
+    <string name="debug_empty">No commands logged yet.</string>
+    <string name="debug_clear">Clear log</string>
+
+    <!-- Runtime feedback -->
+    <string name="error_not_understood">Sorry, I didn\'t understand that.</string>
+    <string name="error_no_network">An internet connection is required for this command.</string>
+    <string name="error_no_api_key">No API key is set. Open Settings and add one to use cloud commands.</string>
+    <string name="error_needs_accessibility">I need the Accessibility permission to do that.</string>
+    <string name="error_needs_permission">I need the %1$s permission to do that.</string>
+    <string name="error_not_supported">Android does not allow me to do that directly. %1$s</string>
+    <string name="error_provider">The AI provider returned an error: %1$s</string>
+    <string name="error_no_speech">I didn\'t catch that.</string>
+
+    <string name="notification_channel_name">JARVIS assistant</string>
+    <string name="notification_channel_description">Keeps the floating orb and wake word running.</string>
+    <string name="notification_running">JARVIS is running</string>
+    <string name="notification_listening">JARVIS is listening for "Hey Jarvis"</string>
+    <string name="notification_stop">Stop</string>
+
+    <string name="orb_content_description">JARVIS orb</string>
+    <string name="action_back">Back</string>
+    <string name="action_close">Close</string>
+    <!-- Offline fast-path confirmations. Spoken when no model is involved,
+         so they have to be localised here rather than written by the model. -->
+    <string name="done_generic">Done.</string>
+    <string name="done_opened_app">Opened %1$s.</string>
+    <string name="done_volume_up">Volume up.</string>
+    <string name="done_volume_down">Volume down.</string>
+    <string name="done_volume_set">Volume set to %1$d percent.</string>
+    <string name="done_muted">Muted.</string>
+    <string name="done_unmuted">Unmuted.</string>
+    <string name="done_flashlight_on">Torch on.</string>
+    <string name="done_flashlight_off">Torch off.</string>
+    <string name="done_screenshot">Screenshot taken.</string>
+    <string name="done_home">Home screen.</string>
+    <string name="done_back">Back.</string>
+    <string name="done_recents">Recent apps.</string>
+    <string name="done_notifications">Notifications.</string>
+    <string name="done_settings">Settings.</string>
+    <string name="done_scroll">Scrolled.</string>
+    <string name="done_play">Playing.</string>
+    <string name="done_pause">Paused.</string>
+    <string name="done_next">Next track.</string>
+    <string name="done_previous">Previous track.</string>
+    <string name="error_generic">Sorry, that did not work. %1$s</string>
+    <string name="error_cancelled">All right, I will not do that.</string>
+    <!-- Ollama -->
+    <string name="error_no_ollama_server">No Ollama server address is set. Open Settings and add one.</string>
+    <string name="settings_test_connection">Test connection</string>
+    <string name="settings_testing">Checking…</string>
+    <string name="settings_connection_ok">Connected. Models available: %1$s</string>
+    <string name="settings_connection_no_models">Connected, but that server has no models pulled yet. Run "ollama pull qwen2.5" on it.</string>
+    <string name="settings_connection_failed">%1$s</string>
+    <string name="settings_ollama_note">Start Ollama with OLLAMA_HOST=0.0.0.0 so it accepts connections from your phone, and make sure the phone is on the same Wi-Fi. A local model needs tool support: qwen2.5 and llama3.1 both have it.</string>
+    <string name="settings_model_not_pulled">Warning: "%1$s" is not on that server. Pull it, or pick one of the models listed above.</string>
+    <!-- Not translated: this is configuration, not copy. Set it to your GitHub
+         repository as "owner/name" so the in-app updater knows where to look. -->
+    <string name="github_repo" translatable="false">OWNER/REPO</string>
+    <!-- Updates -->
+    <string name="settings_section_updates">Updates</string>
+    <string name="settings_current_version">Installed version</string>
+    <string name="update_check">Check for updates</string>
+    <string name="update_checking">Checking…</string>
+    <string name="update_up_to_date">You are on the latest version.</string>
+    <string name="update_available">Version %1$s is available. Tap to download and install.</string>
+    <string name="update_download">Download and install</string>
+    <string name="update_downloading">Downloading…</string>
+    <string name="update_downloading_percent">Downloading %1$d%%</string>
+    <string name="update_ready">Downloaded. Follow the system prompt to install.</string>
+    <string name="update_repo_not_configured">No GitHub repository is configured yet. Set github_repo in strings.xml.</string>
+    <string name="update_no_release">That repository has no published release yet. Push to main and let the build finish.</string>
+    <string name="update_no_apk_asset">The latest release has no APK attached.</string>
+    <string name="update_network_error">Could not reach GitHub. %1$s</string>
+    <string name="update_needs_install_permission">JARVIS needs permission to install apps before it can update itself.</string>
+    <string name="update_grant_install">Grant install permission</string>
+    <string name="update_open_releases">Open releases page</string>
+</resources>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  canRetrieveWindowContent + canPerformGestures are what make read_screen,
+  click_text, tap, swipe and scroll real actions rather than pretend ones.
+  canTakeScreenshot (API 30+) is what lets take_screenshot work without
+  MediaProjection, so JARVIS never has to pop a capture dialog. Note that it is
+  an attribute, not an accessibilityFlags value; there is no such thing as a
+  flagRequestScreenshot flag.
+-->
+<accessibility-service xmlns:android="http://schemas.android.com/apk/res/android"
+    android:accessibilityEventTypes="typeWindowStateChanged|typeWindowContentChanged|typeViewClicked|typeViewFocused"
+    android:accessibilityFeedbackType="feedbackGeneric"
+    android:accessibilityFlags="flagDefault|flagReportViewIds|flagRetrieveInteractiveWindows|flagIncludeNotImportantViews"
+    android:canPerformGestures="true"
+    android:canRetrieveWindowContent="true"
+    android:canTakeScreenshot="true"
+    android:description="@string/accessibility_service_description"
+    android:notificationTimeout="100" />

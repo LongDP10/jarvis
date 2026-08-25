@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Ollama runs on the user's own machine over plain HTTP on the local network.
+  Android blocks cleartext by default from targetSdk 28, so without this file
+  every request to the Ollama server fails with
+
+      CLEARTEXT communication to 192.168.x.x not permitted by network security policy
+
+  before a single byte leaves the phone.
+
+  Cleartext is therefore permitted app-wide. That is broader than anyone would
+  like, and it is worth being precise about why it cannot be narrowed: Android
+  matches <domain> entries as hostnames, by DNS label. There is no CIDR support
+  and no wildcard for IP literals, so "192.168.1.0" with includeSubdomains does
+  NOT cover 192.168.1.10. Since the Ollama address is typed in by the user at
+  runtime, no fixed list of <domain> entries can cover it. The choice is between
+  permitting cleartext app-wide and not supporting a LAN model server at all.
+
+  What keeps the hole small:
+
+    - The cloud endpoints below are pinned back to HTTPS-only, so a redirect,
+      a typo or a tampered response can never downgrade an API-key-bearing
+      request to plaintext.
+    - Every provider URL in the code is an https:// literal
+      (OpenAiMapper.ENDPOINT, GeminiMapper.endpoint); only the Ollama base URL
+      is user-supplied.
+    - The one remaining cleartext path is a server on the user's own network
+      that they configured themselves.
+-->
+<network-security-config>
+
+    <base-config cleartextTrafficPermitted="true">
+        <trust-anchors>
+            <certificates src="system" />
+        </trust-anchors>
+    </base-config>
+
+    <!--
+      The cloud providers keep the strict policy regardless of the base config.
+      An API key must never travel in the clear, even if something upstream
+      tries to redirect the request to http://.
+    -->
+    <domain-config cleartextTrafficPermitted="false">
+        <domain includeSubdomains="true">api.openai.com</domain>
+        <domain includeSubdomains="true">generativelanguage.googleapis.com</domain>
+        <domain includeSubdomains="true">googleapis.com</domain>
+    </domain-config>
+</network-security-config>

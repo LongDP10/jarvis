@@ -1,0 +1,15 @@
+# The CI runner is Linux. gradlew is a shell script, and if git checks it out
+# with CRLF line endings the runner fails with a "bad interpreter" error that
+# looks nothing like a line-ending problem. Pin it to LF explicitly.
+* text=auto
+gradlew text eol=lf
+*.sh text eol=lf
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Binary, never touch.
+*.jar binary
+*.keystore binary
+*.jks binary
+*.png binary
+*.apk binary

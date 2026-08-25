@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Only the updates folder is exposed, and only so the system package installer
+  can read the APK JARVIS just downloaded. Nothing else in the app's storage is
+  reachable through this provider: not the screenshots, not the database, and
+  not the encrypted key store.
+-->
+<paths>
+    <external-files-path
+        name="updates"
+        path="updates/" />
+</paths>

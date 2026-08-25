@@ -1,0 +1,82 @@
+name: Build and release APK
+
+# Every push to main produces an installable, signed APK and publishes it as a
+# release. The in-app updater reads the newest release, so pushing here is the
+# whole deployment process.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  # Needed to create the release and upload the APK to it.
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: Restore signing keystore
+        # The keystore lives only as a base64 secret. Written outside the
+        # workspace so it can never be picked up by a build step or archived.
+        env:
+          KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
+        run: |
+          if [ -z "$KEYSTORE_BASE64" ]; then
+            echo "::error::KEYSTORE_BASE64 secret is not set. Add it before pushing; an unsigned APK cannot be installed."
+            exit 1
+          fi
+          echo "$KEYSTORE_BASE64" | base64 -d > "$RUNNER_TEMP/jarvis.keystore"
+
+      - name: Run unit tests
+        run: ./gradlew testDebugUnitTest --console=plain
+
+      - name: Build signed release APK
+        env:
+          JARVIS_KEYSTORE_PATH: ${{ runner.temp }}/jarvis.keystore
+          JARVIS_KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          JARVIS_KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+          JARVIS_KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+          # run_number only ever increases, which is exactly what a versionCode
+          # has to do. The updater compares nothing else.
+          JARVIS_VERSION_CODE: ${{ github.run_number }}
+          JARVIS_VERSION_NAME: 1.0.${{ github.run_number }}
+        run: ./gradlew assembleRelease --console=plain
+
+      - name: Publish release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          VERSION="1.0.${{ github.run_number }}"
+          APK="app/build/outputs/apk/release/app-release.apk"
+
+          if [ ! -f "$APK" ]; then
+            echo "::error::Expected APK at $APK but it was not produced."
+            exit 1
+          fi
+
+          # The tag's last segment IS the versionCode the app compares against,
+          # so the naming here is load-bearing, not cosmetic.
+          cp "$APK" "jarvis-$VERSION.apk"
+
+          gh release create "v$VERSION" "jarvis-$VERSION.apk" \
+            --title "JARVIS $VERSION" \
+            --notes "Automatic build of ${{ github.sha }}
+
+          $(git log -1 --pretty=%B)"
+
+      - name: Clean up keystore
+        if: always()
+        run: rm -f "$RUNNER_TEMP/jarvis.keystore"

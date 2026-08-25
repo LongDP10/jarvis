@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">JARVIS</string>
+    <string name="accessibility_service_label">JARVIS Điều khiển thiết bị</string>
+    <string name="accessibility_service_description">Cho phép JARVIS đọc nội dung trên màn hình và thực hiện chạm, vuốt, thao tác hệ thống thay bạn khi bạn ra lệnh. JARVIS không bao giờ tự ý hành động.</string>
+    <string name="notification_listener_label">JARVIS Thông báo</string>
+
+    <string name="state_ready">Sẵn sàng</string>
+    <string name="state_listening">Đang nghe…</string>
+    <string name="state_thinking">Đang xử lý…</string>
+    <string name="state_executing">Đang thực hiện…</string>
+    <string name="state_speaking">Đang trả lời…</string>
+    <string name="state_error">Đã xảy ra lỗi</string>
+    <string name="state_cancelled">Đã huỷ</string>
+
+    <string name="home_greeting">Tôi có thể giúp gì cho bạn?</string>
+    <string name="home_voice">Giọng nói</string>
+    <string name="home_commands">Lệnh</string>
+    <string name="home_history">Lịch sử</string>
+    <string name="home_settings">Cài đặt</string>
+    <string name="home_tap_to_speak">Chạm vào orb để nói</string>
+
+    <string name="chat_title">Trò chuyện</string>
+    <string name="chat_hint">Nhập lệnh…</string>
+    <string name="chat_send">Gửi</string>
+    <string name="chat_mic">Nói</string>
+    <string name="chat_empty">Hãy bảo JARVIS làm gì đó trên điện thoại của bạn.</string>
+
+    <string name="settings_title">Cài đặt</string>
+    <string name="settings_section_language">Ngôn ngữ</string>
+    <string name="settings_language">Ngôn ngữ trợ lý</string>
+    <string name="settings_language_vi">Tiếng Việt</string>
+    <string name="settings_language_en">English</string>
+    <string name="settings_language_auto">Tự động nhận diện</string>
+
+    <string name="settings_section_voice">Giọng nói</string>
+    <string name="settings_voice">Giọng đọc</string>
+    <string name="settings_voice_default">Mặc định hệ thống</string>
+    <string name="settings_speech_rate">Tốc độ nói</string>
+    <string name="settings_pitch">Cao độ</string>
+    <string name="settings_voice_processing">Xử lý giọng nói</string>
+    <string name="settings_voice_processing_cloud">Đám mây</string>
+    <string name="settings_voice_processing_local">Trên máy</string>
+    <string name="settings_voice_processing_hybrid">Kết hợp</string>
+    <string name="settings_voice_processing_note">Nhận dạng trên máy chỉ hoạt động nếu bạn đã tải gói ngôn ngữ ngoại tuyến trong cài đặt Android.</string>
+
+    <string name="settings_section_ai">AI</string>
+    <string name="settings_provider">Nhà cung cấp AI</string>
+    <string name="settings_api_key">API key</string>
+    <string name="settings_api_key_hint">Dán key của bạn</string>
+    <string name="settings_api_key_saved">Key đã được lưu mã hoá trên máy</string>
+    <string name="settings_api_key_missing">Chưa có key — các lệnh cần AI sẽ không chạy</string>
+    <string name="settings_api_key_note">Được mã hoá bằng Android keystore. Chỉ gửi tới nhà cung cấp bạn chọn.</string>
+    <string name="settings_ollama_url">Địa chỉ máy chủ Ollama</string>
+    <string name="settings_model">Mô hình</string>
+
+    <string name="settings_section_assistant">Trợ lý</string>
+    <string name="settings_wake_word">Từ đánh thức "Hey Jarvis"</string>
+    <string name="settings_wake_word_warning">Giữ nhận dạng giọng nói chạy nền. Tiêu hao pin nhiều hơn đáng kể.</string>
+    <string name="settings_floating_orb">Orb nổi</string>
+    <string name="settings_always_listening">Luôn lắng nghe</string>
+    <string name="settings_orb_size">Kích thước orb</string>
+    <string name="settings_orb_position">Vị trí orb</string>
+    <string name="settings_position_top_left">Trên trái</string>
+    <string name="settings_position_top_right">Trên phải</string>
+    <string name="settings_position_bottom_left">Dưới trái</string>
+    <string name="settings_position_bottom_right">Dưới phải</string>
+    <string name="settings_confirm_dangerous">Xác nhận cuộc gọi và tin nhắn</string>
+    <string name="settings_confirm_dangerous_note">Luôn bật. JARVIS sẽ không bao giờ gọi điện hay gửi tin nhắn mà chưa hỏi bạn.</string>
+
+    <string name="settings_section_developer">Nhà phát triển</string>
+    <string name="settings_debug_log">Nhật ký gỡ lỗi</string>
+    <string name="settings_open_debug">Mở bảng gỡ lỗi</string>
+
+    <string name="onboarding_title">Thiết lập JARVIS</string>
+    <string name="onboarding_subtitle">JARVIS chỉ xin quyền khi tính năng cần đến. Bạn có thể bỏ qua và cấp sau.</string>
+    <string name="permission_grant">Cấp quyền</string>
+    <string name="permission_open_settings">Mở cài đặt</string>
+    <string name="permission_granted">Đã cấp</string>
+    <string name="permission_microphone">Micro</string>
+    <string name="permission_microphone_reason">Cần thiết để nghe lệnh của bạn.</string>
+    <string name="permission_notification">Thông báo</string>
+    <string name="permission_notification_reason">Để JARVIS hiển thị việc đang làm khi chạy nền.</string>
+    <string name="permission_overlay">Hiển thị trên ứng dụng khác</string>
+    <string name="permission_overlay_reason">Cần thiết để orb nổi luôn hiện trên các ứng dụng khác.</string>
+    <string name="permission_accessibility">Dịch vụ trợ năng</string>
+    <string name="permission_accessibility_reason">Cần thiết để chạm, cuộn, đọc màn hình và chụp màn hình. Android không cho phép ứng dụng tự bật quyền này.</string>
+    <string name="permission_location">Vị trí</string>
+    <string name="permission_location_reason">Chỉ dùng khi bạn hỏi về vị trí hoặc thông tin quanh bạn.</string>
+    <string name="permission_phone">Điện thoại</string>
+    <string name="permission_phone_reason">Chỉ dùng khi bạn yêu cầu gọi điện. Mọi cuộc gọi đều được xác nhận trước.</string>
+    <string name="permission_sms">Tin nhắn</string>
+    <string name="permission_sms_reason">Chỉ dùng khi bạn yêu cầu gửi tin nhắn. Mọi tin nhắn đều được xác nhận trước.</string>
+    <string name="permission_contacts">Danh bạ</string>
+    <string name="permission_contacts_reason">Để JARVIS tìm số điện thoại theo tên khi bạn yêu cầu gọi ai đó.</string>
+    <string name="permission_notification_listener">Quyền đọc thông báo</string>
+    <string name="permission_notification_listener_reason">Để JARVIS đọc thông báo cho bạn khi được yêu cầu.</string>
+    <string name="permission_write_settings">Thay đổi cài đặt hệ thống</string>
+    <string name="permission_write_settings_reason">Cần thiết để chỉnh độ sáng màn hình.</string>
+
+    <string name="confirm_title">Xác nhận</string>
+    <string name="confirm_cancel">Huỷ</string>
+    <string name="confirm_ok">Xác nhận</string>
+    <string name="confirm_call">Gọi</string>
+    <string name="confirm_send">Gửi</string>
+    <string name="confirm_call_message">Gọi cho %1$s?</string>
+    <string name="confirm_sms_message">Gửi tin nhắn này tới %1$s?</string>
+
+    <string name="history_title">Lịch sử</string>
+    <string name="history_empty">Chưa có cuộc trò chuyện nào.</string>
+    <string name="history_clear">Xoá lịch sử</string>
+    <string name="debug_title">Bảng gỡ lỗi</string>
+    <string name="debug_empty">Chưa có lệnh nào được ghi.</string>
+    <string name="debug_clear">Xoá nhật ký</string>
+
+    <string name="error_not_understood">Xin lỗi, tôi chưa hiểu yêu cầu của bạn.</string>
+    <string name="error_no_network">Cần kết nối Internet để thực hiện lệnh này.</string>
+    <string name="error_no_api_key">Chưa có API key. Hãy vào Cài đặt và thêm key để dùng các lệnh cần AI.</string>
+    <string name="error_needs_accessibility">Tôi cần quyền Trợ năng để làm việc đó.</string>
+    <string name="error_needs_permission">Tôi cần quyền %1$s để làm việc đó.</string>
+    <string name="error_not_supported">Android không cho phép tôi làm việc đó trực tiếp. %1$s</string>
+    <string name="error_provider">Nhà cung cấp AI báo lỗi: %1$s</string>
+    <string name="error_no_speech">Tôi chưa nghe rõ.</string>
+
+    <string name="notification_channel_name">Trợ lý JARVIS</string>
+    <string name="notification_channel_description">Giữ orb nổi và từ đánh thức hoạt động.</string>
+    <string name="notification_running">JARVIS đang chạy</string>
+    <string name="notification_listening">JARVIS đang chờ "Hey Jarvis"</string>
+    <string name="notification_stop">Dừng</string>
+
+    <string name="orb_content_description">Orb JARVIS</string>
+    <string name="action_back">Quay lại</string>
+    <string name="action_close">Đóng</string>
+    <string name="done_generic">Xong.</string>
+    <string name="done_opened_app">Đã mở %1$s.</string>
+    <string name="done_volume_up">Đã tăng âm lượng.</string>
+    <string name="done_volume_down">Đã giảm âm lượng.</string>
+    <string name="done_volume_set">Đã đặt âm lượng %1$d phần trăm.</string>
+    <string name="done_muted">Đã tắt tiếng.</string>
+    <string name="done_unmuted">Đã bật tiếng.</string>
+    <string name="done_flashlight_on">Đã bật đèn pin.</string>
+    <string name="done_flashlight_off">Đã tắt đèn pin.</string>
+    <string name="done_screenshot">Đã chụp màn hình.</string>
+    <string name="done_home">Đã về màn hình chính.</string>
+    <string name="done_back">Đã quay lại.</string>
+    <string name="done_recents">Ứng dụng gần đây.</string>
+    <string name="done_notifications">Thông báo.</string>
+    <string name="done_settings">Cài đặt.</string>
+    <string name="done_scroll">Đã cuộn.</string>
+    <string name="done_play">Đang phát.</string>
+    <string name="done_pause">Đã tạm dừng.</string>
+    <string name="done_next">Bài tiếp theo.</string>
+    <string name="done_previous">Bài trước.</string>
+    <string name="error_generic">Xin lỗi, không thực hiện được. %1$s</string>
+    <string name="error_cancelled">Được, tôi sẽ không làm việc đó.</string>
+    <string name="error_no_ollama_server">Chưa đặt địa chỉ máy chủ Ollama. Hãy vào Cài đặt để thêm.</string>
+    <string name="settings_test_connection">Kiểm tra kết nối</string>
+    <string name="settings_testing">Đang kiểm tra…</string>
+    <string name="settings_connection_ok">Đã kết nối. Mô hình có sẵn: %1$s</string>
+    <string name="settings_connection_no_models">Đã kết nối, nhưng máy chủ đó chưa pull mô hình nào. Chạy "ollama pull qwen2.5" trên máy đó.</string>
+    <string name="settings_connection_failed">%1$s</string>
+    <string name="settings_ollama_note">Khởi động Ollama với OLLAMA_HOST=0.0.0.0 để nó nhận kết nối từ điện thoại, và đảm bảo điện thoại cùng mạng Wi-Fi. Mô hình phải hỗ trợ tool calling: qwen2.5 và llama3.1 đều có.</string>
+    <string name="settings_model_not_pulled">Cảnh báo: "%1$s" không có trên máy chủ đó. Hãy pull nó, hoặc chọn một trong các mô hình ở trên.</string>
+    <string name="settings_section_updates">Cập nhật</string>
+    <string name="settings_current_version">Phiên bản đang cài</string>
+    <string name="update_check">Kiểm tra cập nhật</string>
+    <string name="update_checking">Đang kiểm tra…</string>
+    <string name="update_up_to_date">Bạn đang dùng bản mới nhất.</string>
+    <string name="update_available">Đã có phiên bản %1$s. Chạm để tải và cài.</string>
+    <string name="update_download">Tải và cài</string>
+    <string name="update_downloading">Đang tải…</string>
+    <string name="update_downloading_percent">Đang tải %1$d%%</string>
+    <string name="update_ready">Đã tải xong. Làm theo hộp thoại cài đặt của hệ thống.</string>
+    <string name="update_repo_not_configured">Chưa cấu hình repository GitHub. Hãy sửa github_repo trong strings.xml.</string>
+    <string name="update_no_release">Repository đó chưa có bản phát hành nào. Hãy push lên main và chờ CI build xong.</string>
+    <string name="update_no_apk_asset">Bản phát hành mới nhất không có file APK đính kèm.</string>
+    <string name="update_network_error">Không kết nối được tới GitHub. %1$s</string>
+    <string name="update_needs_install_permission">JARVIS cần quyền cài đặt ứng dụng thì mới tự cập nhật được.</string>
+    <string name="update_grant_install">Cấp quyền cài đặt</string>
+    <string name="update_open_releases">Mở trang phát hành</string>
+</resources>

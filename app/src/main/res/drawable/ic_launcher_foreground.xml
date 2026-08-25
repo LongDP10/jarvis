@@ -1,0 +1,37 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Outer ring, broken into arcs so it reads as a HUD rather than a circle. -->
+    <path
+        android:strokeColor="#4D67E8FF"
+        android:strokeWidth="1.6"
+        android:pathData="M54,26 A28,28 0 0 1 82,54" />
+    <path
+        android:strokeColor="#4D67E8FF"
+        android:strokeWidth="1.6"
+        android:pathData="M54,82 A28,28 0 0 1 26,54" />
+
+    <!-- Middle ring -->
+    <path
+        android:strokeColor="#A667E8FF"
+        android:strokeWidth="2"
+        android:pathData="M33,54 A21,21 0 0 1 54,33" />
+    <path
+        android:strokeColor="#A667E8FF"
+        android:strokeWidth="2"
+        android:pathData="M75,54 A21,21 0 0 1 54,75" />
+
+    <!-- Core -->
+    <path
+        android:fillColor="#FF67E8FF"
+        android:pathData="M54,42 A12,12 0 1 1 53.9,42 Z" />
+    <path
+        android:fillColor="#FF0B1B2E"
+        android:pathData="M54,47 A7,7 0 1 1 53.9,47 Z" />
+    <path
+        android:fillColor="#FFB8F1FF"
+        android:pathData="M54,50 A4,4 0 1 1 53.9,50 Z" />
+</vector>
