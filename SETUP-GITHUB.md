@@ -1,93 +1,53 @@
 # Tự động cập nhật qua GitHub
 
-Sau khi thiết lập xong một lần, quy trình của bạn là:
+> **Thiết lập đã hoàn tất.** Repo, CI, khoá ký và cả 4 secret đều đã dựng xong và
+> chạy xanh. Tài liệu này giữ lại để tra cứu khi cần dựng lại hoặc khi hỏng.
+
+Quy trình hằng ngày của bạn:
 
 ```
-sửa code → git push → chờ ~4 phút → mở JARVIS → Settings → Kiểm tra cập nhật → Cài
+sửa code → git push → chờ ~4 phút → JARVIS → Settings → Kiểm tra cập nhật → Cài
 ```
 
-Không còn xuất APK, không còn cắm cáp, không còn gửi file sang điện thoại.
+## Trạng thái hiện tại
+
+| Hạng mục | Giá trị |
+|---|---|
+| Repo | https://github.com/LongDP10/jarvis (public) |
+| CI | `.github/workflows/build.yml`, chạy mỗi lần push lên `main` |
+| Khoá ký | `jarvis-release.keystore`, alias `jarvis`, hạn 10.000 ngày |
+| Secret | `KEYSTORE_BASE64`, `KEYSTORE_PASSWORD`, `KEY_ALIAS`, `KEY_PASSWORD` |
+| Release | https://github.com/LongDP10/jarvis/releases |
+
+**Sao lưu `jarvis-release.keystore` ra chỗ khác (Drive, USB).** Mất nó là mọi bản
+cập nhật sau này không cài đè được — phải gỡ app, mất sạch cài đặt và lịch sử.
+File này đã bị `.gitignore` nên không bao giờ lên repo.
 
 ---
 
-## Bước 1 — Tạo khoá ký (chỉ làm một lần)
+## Dựng lại từ đầu (nếu đổi máy hoặc mất khoá)
 
-APK bắt buộc phải được ký, và **phải ký bằng đúng một khoá mãi mãi**. Android chỉ
-cho phép cập nhật đè lên khi chữ ký khớp; đổi khoá thì phải gỡ app cài lại từ đầu.
-
-Mở PowerShell tại thư mục dự án:
+**1. Tạo khoá ký**
 
 ```powershell
-& "C:\Program Files\Android\Android Studio1\jbr\bin\keytool.exe" -genkeypair -v -keystore jarvis-release.keystore -alias jarvis -keyalg RSA -keysize 2048 -validity 10000 -dname "CN=JARVIS, O=Personal, C=VN"
+& "C:\Program Files\Android\Android Studio1\jbrin\keytool.exe" -genkeypair -v -keystore jarvis-release.keystore -alias jarvis -keyalg RSA -keysize 2048 -validity 10000 -dname "CN=JARVIS, O=Personal, C=VN"
 ```
 
-Nó sẽ hỏi mật khẩu hai lần (keystore và key) — **đặt cùng một mật khẩu cho đơn giản**,
-và ghi lại chỗ nào an toàn.
-
-> **Tôi cố tình không tự tạo khoá này cho bạn.** Mật khẩu sẽ nằm trong lịch sử chat,
-> và quan trọng hơn: mất file `jarvis-release.keystore` là mất khả năng cập nhật
-> vĩnh viễn. Nó phải là thứ bạn sở hữu và tự sao lưu. File đã được `.gitignore`
-> nên sẽ không bao giờ lọt lên GitHub.
-
-Chuyển sang base64 để nhét vào GitHub Secret (lệnh này copy thẳng vào clipboard):
+**2. Nạp secret bằng `gh`**
 
 ```powershell
-[Convert]::ToBase64String([IO.File]::ReadAllBytes("jarvis-release.keystore")) | Set-Clipboard
+$b64 = [Convert]::ToBase64String([IO.File]::ReadAllBytes("jarvis-release.keystore"))
+gh secret set KEYSTORE_BASE64 --repo LongDP10/jarvis --body $b64
+gh secret set KEYSTORE_PASSWORD --repo LongDP10/jarvis --body "MAT_KHAU"
+gh secret set KEY_ALIAS --repo LongDP10/jarvis --body "jarvis"
+gh secret set KEY_PASSWORD --repo LongDP10/jarvis --body "MAT_KHAU"
 ```
 
-## Bước 2 — Tạo repo và đẩy code lên
+> **Bắt buộc dùng `--body`, không được pipe.** PowerShell 5.1 chèn CRLF khi pipe
+> chuỗi dài sang lệnh native, và `base64 -d` trên runner Linux coi ký tự `` là
+> input không hợp lệ. Đây chính là lỗi đã gặp lần đầu.
 
-Tạo một repository **public** rỗng trên github.com (đừng tick "Add a README"), rồi:
-
-```bash
-git remote add origin https://github.com/LongDP10/jarvis.git
-```
-
-```bash
-git branch -M main && git push -u origin main
-```
-
-Repo để public là quyết định bạn đã chọn, và nó là lý do việc tự cập nhật chạy được
-mà không cần token: file APK trong Release tải được ẩn danh. Trong mã nguồn **không
-có API key nào** — key nằm trong `EncryptedSharedPreferences` trên máy bạn, và
-`local.properties` đã bị `.gitignore`.
-
-## Bước 3 — Thêm 4 secret
-
-Trên GitHub: **Settings → Secrets and variables → Actions → New repository secret**.
-
-| Tên secret | Giá trị |
-|---|---|
-| `KEYSTORE_BASE64` | Chuỗi base64 vừa copy ở Bước 1 |
-| `KEYSTORE_PASSWORD` | Mật khẩu bạn vừa đặt |
-| `KEY_ALIAS` | `jarvis` |
-| `KEY_PASSWORD` | Mật khẩu bạn vừa đặt |
-
-Thiếu `KEYSTORE_BASE64` thì CI dừng ngay với thông báo rõ ràng, thay vì tạo ra một
-APK không ký mà bạn không cài được.
-
-## Bước 4 — Trỏ app về repo của bạn
-
-Sửa **một dòng** trong `app/src/main/res/values/strings.xml`:
-
-```xml
-<string name="github_repo" translatable="false">LongDP10/jarvis</string>
-```
-
-Rồi:
-
-```bash
-git add -A && git commit -m "Point the updater at my repository" && git push
-```
-
-## Bước 5 — Cài bản đầu tiên bằng tay (chỉ lần này)
-
-Vào tab **Actions** trên GitHub xem build chạy. Xong thì sang tab **Releases**.
-
-Trên điện thoại, mở đúng trang Release đó và tải file `jarvis-1.0.x.apk`. Android sẽ
-hỏi có cho phép cài từ nguồn này không — đồng ý.
-
-Từ lần sau trở đi: **Settings → Cập nhật → Kiểm tra cập nhật**.
+**3. Trỏ app về repo** — sửa `github_repo` trong `app/src/main/res/values/strings.xml`.
 
 ---
 
