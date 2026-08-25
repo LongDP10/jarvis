@@ -174,7 +174,7 @@
     <string name="settings_model_not_pulled">Warning: "%1$s" is not on that server. Pull it, or pick one of the models listed above.</string>
     <!-- Not translated: this is configuration, not copy. Set it to your GitHub
          repository as "owner/name" so the in-app updater knows where to look. -->
-    <string name="github_repo" translatable="false">OWNER/REPO</string>
+    <string name="github_repo" translatable="false">LongDP10/jarvis</string>
     <!-- Updates -->
     <string name="settings_section_updates">Updates</string>
     <string name="settings_current_version">Installed version</string>

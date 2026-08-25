@@ -40,7 +40,7 @@ Chuyển sang base64 để nhét vào GitHub Secret (lệnh này copy thẳng v�
 Tạo một repository **public** rỗng trên github.com (đừng tick "Add a README"), rồi:
 
 ```bash
-git remote add origin https://github.com/TEN_CUA_BAN/jarvis.git
+git remote add origin https://github.com/LongDP10/jarvis.git
 ```
 
 ```bash
@@ -71,7 +71,7 @@ APK không ký mà bạn không cài được.
 Sửa **một dòng** trong `app/src/main/res/values/strings.xml`:
 
 ```xml
-<string name="github_repo" translatable="false">TEN_CUA_BAN/jarvis</string>
+<string name="github_repo" translatable="false">LongDP10/jarvis</string>
 ```
 
 Rồi:
