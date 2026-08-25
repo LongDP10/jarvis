@@ -337,7 +337,17 @@ khi cần tìm nguyên nhân.
 - Nội dung thông báo chỉ giữ trong RAM, không ghi vào database hay debug log.
 - Không dùng `QUERY_ALL_PACKAGES`; danh sách app đọc qua `<queries>` launcher intent.
 
-## 10. Tài liệu thiết kế
+## 10. Tự động cập nhật
+
+CI trên GitHub build APK đã ký mỗi lần push lên `main` và tạo Release; JARVIS tự
+kiểm tra Release mới trong **Settings → Cập nhật** rồi tải và gọi trình cài đặt của
+hệ thống. Không còn xuất file rồi gửi sang điện thoại.
+
+Thiết lập một lần: [SETUP-GITHUB.md](SETUP-GITHUB.md).
+
+---
+
+## 11. Tài liệu thiết kế
 
 - Spec: [docs/superpowers/specs/2026-08-23-jarvis-android-assistant-design.md](docs/superpowers/specs/2026-08-23-jarvis-android-assistant-design.md)
 - Kế hoạch triển khai: [docs/superpowers/plans/2026-08-23-jarvis-android-assistant.md](docs/superpowers/plans/2026-08-23-jarvis-android-assistant.md)
